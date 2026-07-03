@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-portek-bg: #0a0c10;
+  --color-portek-card: #11141a;
+  --color-portek-card-hover: #161b24;
+  --color-portek-green: #00d166;
+  --color-portek-green-dim: #00b85a;
+  --color-portek-muted: #8b95a5;
+  --color-portek-border: #1e2430;
+  --color-portek-text: #ffffff;
+  --color-portek-text-soft: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] {
+  --color-portek-bg: #f0f2f5;
+  --color-portek-card: #ffffff;
+  --color-portek-card-hover: #f8f9fb;
+  --color-portek-muted: #5c6778;
+  --color-portek-border: #dde3ea;
+  --color-portek-text: #1a2332;
+  --color-portek-text-soft: rgba(26, 35, 50, 0.9);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-portek-bg);
+  color: var(--color-portek-text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="light"] .text-white {
+  color: var(--color-portek-text);
+}
+
+[data-theme="light"] .text-white\/90 {
+  color: var(--color-portek-text-soft);
+}
+
+[data-theme="light"] .text-white\/80 {
+  color: rgba(26, 35, 50, 0.8);
+}
+
+[data-theme="light"] .hover\:text-white:hover {
+  color: var(--color-portek-text);
+}
+
+[data-theme="light"] .border-white\/25 {
+  border-color: rgba(26, 35, 50, 0.25);
+}
+
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 209, 102, 0.2) 0%,
+    rgba(0, 209, 102, 0.08) 40%,
+    transparent 70%
+  );
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.hero-glow {
+  background: radial-gradient(
+    circle,
+    rgba(0, 209, 102, 0.35) 0%,
+    rgba(0, 209, 102, 0.12) 40%,
+    transparent 70%
+  );
+}
