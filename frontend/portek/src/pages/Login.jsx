@@ -62,7 +62,7 @@ export default function Login() {
     try {
       if (isLogin) {
         const res = await axios.post(
-          "https://portek-backend.onrender.com/api",
+          "https://portek-backend.onrender.com/api/login",
           {
             email: form.email,
             password: form.password,
@@ -78,7 +78,7 @@ export default function Login() {
         }, 1000);
       } else {
         const res = await axios.post(
-          "https://portek-backend.onrender.com/api",
+          "https://portek-backend.onrender.com/api/register",
           form
         );
 
