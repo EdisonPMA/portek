@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 import {
   FaCode,
   FaRocket,
@@ -61,13 +61,10 @@ export default function Login() {
 
     try {
       if (isLogin) {
-        const res = await axios.post(
-          "https://portek-backend.onrender.com/api/login",
-          {
-            email: form.email,
-            password: form.password,
-          }
-        );
+        const res = await api.post("/login", {
+          email: form.email,
+          password: form.password,
+        });
 
         localStorage.setItem("token", res.data.token);
 
@@ -77,10 +74,7 @@ export default function Login() {
           window.location.href = "/admin/dashboard";
         }, 1000);
       } else {
-        const res = await axios.post(
-          "https://portek-backend.onrender.com/api/register",
-          form
-        );
+        const res = await api.post("/register", form);
 
         setMessage(res.data.message);
 

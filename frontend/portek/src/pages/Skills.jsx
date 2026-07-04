@@ -48,7 +48,8 @@ function SkillIcon({ skill, size = "md" }) {
   return <FaCode className={`${size === "lg" ? "w-10 h-10" : "w-8 h-8"} text-portek-green`} />;
 }
 
-function ProgressBar({ value, label,t }) {
+function ProgressBar({ value, label }) {
+  const { t } = useAppSettings();
   const pct = Math.min(100, Math.max(0, Number(value) || 0));
   return (
     <div>
@@ -244,7 +245,7 @@ export default function Skills() {
 
                   {skill.percentage != null && (
                     <div className="mt-5">
-                      <ProgressBar value={skill.percentage} label={skill.name}  t={t} />
+                      <ProgressBar value={skill.percentage} label={skill.name} />
                     </div>
                   )}
                 </div>
