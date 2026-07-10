@@ -22,7 +22,7 @@ export default function Navbar() {
   const { t } = useAppSettings();
 
   return (
-    <header className="sticky top-0 z-50 bg-portek-bg/90 backdrop-blur-md border-b border-portek-border">
+    <header translate="no" className="sticky top-0 z-50 bg-portek-bg/90 backdrop-blur-md border-b border-portek-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] items-center h-16 lg:h-[4.5rem]">
           <NavLink to="/" className="flex items-center gap-2.5">
@@ -34,9 +34,9 @@ export default function Navbar() {
             </span>
           </NavLink>
 
-          <ul className="flex items-center gap-6 lg:gap-8 text-sm font-medium">
+          <ul suppressHydrationWarning className="flex items-center gap-6 lg:gap-8 text-sm font-medium">
             {navLinkKeys.map((link) => (
-              <li key={link.to}>
+              <li key={link.to} suppressHydrationWarning>
                 <NavLink
                   to={link.to}
                   className={(props) =>
@@ -97,9 +97,9 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-portek-border">
-            <ul className="flex flex-col gap-1 pt-3 font-medium">
+            <ul suppressHydrationWarning className="flex flex-col gap-1 pt-3 font-medium">
               {navLinkKeys.map((link) => (
-                <li key={link.to}>
+                <li key={link.to} suppressHydrationWarning>
                   <NavLink
                     to={link.to}
                     onClick={() => setIsOpen(false)}
@@ -115,7 +115,7 @@ export default function Navbar() {
                   </NavLink>
                 </li>
               ))}
-              <li className="pt-2">
+              <li suppressHydrationWarning className="pt-2">
                 <NavLink
                   to="/contact"
                   onClick={() => setIsOpen(false)}
