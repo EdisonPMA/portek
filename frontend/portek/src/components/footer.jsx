@@ -64,7 +64,7 @@ export default function Footer() {
   return (
     <footer className="bg-portek-bg border-t border-portek-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid md:grid-cols-3 gap-10 lg:gap-16">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-16">
           <div>
             <div className="flex items-center gap-2.5">
               <span className="w-7 h-7 rounded-md bg-portek-green/15 border border-portek-green/40 flex items-center justify-center">

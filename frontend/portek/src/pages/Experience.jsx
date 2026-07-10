@@ -62,9 +62,9 @@ function ExperienceTimeline({ experiences }) {
 
       <div className="space-y-8">
         {experiences.map((exp, index) => (
-          <div key={exp.id} className="relative pl-12 sm:pl-16">
+          <div key={exp.id} className="relative pl-10 sm:pl-16">
             <span
-              className={`absolute left-2.5 sm:left-4 top-6 w-4 h-4 rounded-full border-4 border-portek-bg ${
+              className={`absolute left-2 sm:left-4 top-6 w-4 h-4 rounded-full border-4 border-portek-bg ${
                 exp.current_job ? "bg-portek-green animate-pulse" : "bg-portek-green/60"
               }`}
             />

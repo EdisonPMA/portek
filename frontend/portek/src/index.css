@@ -27,11 +27,25 @@
   color-scheme: dark;
 }
 
+/* Responsive base font size — scales all rem-based text proportionally */
+html {
+  font-size: 16px; /* default */
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 17px; /* slightly larger on phones */
+  }
+}
+
 body {
   background-color: var(--color-portek-bg);
   color: var(--color-portek-text);
   font-family: "Inter", system-ui, -apple-system, sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+  /* Prevent tiny text from browser auto-scaling */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 [data-theme="light"] .text-white {
@@ -75,6 +89,15 @@ body {
 
 .cursor-blink {
   animation: blink 1s step-end infinite;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 .hero-glow {

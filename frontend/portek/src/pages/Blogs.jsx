@@ -81,9 +81,9 @@ function BlogModal({ blog, loading, onClose }) {
   if (!blog && !loading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-portek-border bg-portek-card shadow-2xl">
+      <div className="relative w-full sm:max-w-3xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border border-portek-border bg-portek-card shadow-2xl">
         {loading ? (
           <div className="flex justify-center py-20">
             <span className="w-8 h-8 border-2 border-portek-green/30 border-t-portek-green rounded-full animate-spin" />
@@ -268,8 +268,8 @@ export default function Blogs() {
         <>
       {/* Search & filter */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col gap-4">
+          <div className="relative flex-1">
             <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-portek-muted w-4 h-4" />
             <input
               type="text"
@@ -279,12 +279,12 @@ export default function Blogs() {
               className="w-full pl-11 pr-4 py-3 bg-portek-card border border-portek-border rounded-xl text-white text-sm placeholder:text-portek-muted outline-none focus:border-portek-green/50"
             />
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none flex-nowrap sm:flex-wrap">
             {categoryNames.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setCategoryFilter(cat)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                   categoryFilter === cat
                     ? "bg-portek-green text-portek-bg"
                     : "bg-portek-card border border-portek-border text-portek-muted hover:text-white"

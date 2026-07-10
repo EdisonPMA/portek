@@ -173,12 +173,12 @@ export default function Skills() {
 
       {/* Category filter */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none flex-nowrap sm:flex-wrap sm:justify-center">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeCategory === cat
                   ? "bg-portek-green text-portek-bg"
                   : "bg-portek-card border border-portek-border text-portek-muted hover:text-white hover:border-portek-green/40"

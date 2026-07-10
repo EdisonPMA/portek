@@ -20,7 +20,8 @@ export default function DataTable({ columns, rows, onEdit, onDelete, extraAction
 
   return (
     <div className="rounded-2xl border border-portek-border bg-portek-card overflow-hidden">
-      <div className="overflow-x-auto">
+      {/* Desktop table */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-portek-border bg-portek-bg/50">
@@ -72,6 +73,44 @@ export default function DataTable({ columns, rows, onEdit, onDelete, extraAction
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile card list */}
+      <div className="sm:hidden divide-y divide-portek-border">
+        {rows.map((row, idx) => (
+          <div key={row.id} className="p-4 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-portek-muted text-xs">#{idx + 1}</span>
+              <div className="flex items-center gap-2">
+                {extraActions?.(row)}
+                <button
+                  onClick={() => onEdit(row)}
+                  className="p-2 rounded-lg text-portek-green hover:bg-portek-green/10 transition-colors"
+                  title="Edit"
+                >
+                  <FaEdit className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => onDelete(row)}
+                  className="p-2 rounded-lg text-red-400 hover:bg-red-500/10 transition-colors"
+                  title="Delete"
+                >
+                  <FaTrash className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+            {columns.slice(0, 3).map((col) => (
+              <div key={col} className="flex items-start gap-2">
+                <span className="text-portek-muted text-[10px] uppercase tracking-wide shrink-0 w-20 pt-0.5">
+                  {col.replace(/_/g, " ")}
+                </span>
+                <span className="text-white/90 text-sm truncate flex-1">
+                  {formatCell(row[col])}
+                </span>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );

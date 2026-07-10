@@ -280,14 +280,14 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md aspect-square">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square">
               <div className="absolute inset-0 hero-glow rounded-full scale-90" />
               <div className="absolute inset-4 rounded-full border border-dashed border-portek-green/20" />
               <div className="absolute inset-8 rounded-full border border-dashed border-portek-green/15" />
               <div className="absolute inset-12 rounded-full border border-dashed border-portek-green/10" />
 
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-portek-green/30 shadow-[0_0_60px_rgba(0,209,102,0.25)]">
+                <div className="w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-portek-green/30 shadow-[0_0_60px_rgba(0,209,102,0.25)]">
                   <img
                     src={photoSrc}
                     alt={`${profile.full_name} - ${profile.profession}`}
@@ -296,18 +296,18 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="absolute bottom-4 right-0 sm:right-4 bg-portek-card/90 backdrop-blur-sm border border-portek-border rounded-xl px-4 py-3 max-w-[220px] shadow-lg">
+              <div className="absolute bottom-2 right-0 sm:bottom-4 sm:right-4 bg-portek-card/90 backdrop-blur-sm border border-portek-border rounded-xl px-3 py-2 sm:px-4 sm:py-3 max-w-[180px] sm:max-w-[220px] shadow-lg">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`w-2 h-2 rounded-full ${
+                    className={`w-2 h-2 rounded-full shrink-0 ${
                       isAvailable ? "bg-portek-green animate-pulse" : "bg-yellow-500"
                     }`}
                   />
-                  <span className="text-white text-sm font-medium">
+                  <span className="text-white text-xs sm:text-sm font-medium leading-tight">
                     {isAvailable ? t("common.availableForWork") : t("common.currentlyBusy")}
                   </span>
                 </div>
-                <p className="text-portek-muted text-xs mt-1 leading-relaxed">
+                <p className="text-portek-muted text-[10px] sm:text-xs mt-1 leading-relaxed">
                   {t("home.letsBuild")}
                 </p>
               </div>

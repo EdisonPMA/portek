@@ -155,13 +155,13 @@ function ProjectModal({ project, images, onClose }) {
   const gallery = images.length > 0 ? images : [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-portek-border bg-portek-card shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-portek-border bg-portek-card px-5 py-4">
+      <div className="relative w-full sm:max-w-3xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border border-portek-border bg-portek-card shadow-2xl">
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-portek-border bg-portek-card px-4 sm:px-5 py-4">
           <div className="min-w-0 pr-4">
             <p className="text-portek-green text-xs font-medium uppercase">{project.category}</p>
-            <h2 className="text-xl font-bold text-white truncate">{project.title}</h2>
+            <h2 className="text-base sm:text-xl font-bold text-white truncate">{project.title}</h2>
           </div>
           <button
             onClick={onClose}
@@ -388,8 +388,8 @@ export default function Projects() {
 
       {/* Filters */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between">
-          <div className="relative flex-1 max-w-md">
+        <div className="flex flex-col gap-4">
+          <div className="relative flex-1">
             <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-portek-muted w-4 h-4" />
             <input
               type="text"
@@ -400,41 +400,46 @@ export default function Projects() {
             />
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <div className="flex items-center gap-2 text-portek-muted text-xs mr-1">
-              <FaFilter className="w-3 h-3" /> Filter:
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 text-portek-muted text-xs shrink-0">
+              <FaFilter className="w-3 h-3" /> <span className="hidden sm:inline">Filter:</span>
             </div>
-            {categories.map((cat) => (
-              <button
-                key={`cat-${cat}`}
-                onClick={() => setCategoryFilter(cat)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                  categoryFilter === cat
-                    ? "bg-portek-green text-portek-bg"
-                    : "bg-portek-card border border-portek-border text-portek-muted hover:text-white"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none -mb-1 flex-nowrap">
+              {categories.map((cat) => (
+                <button
+                  key={`cat-${cat}`}
+                  onClick={() => setCategoryFilter(cat)}
+                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    categoryFilter === cat
+                      ? "bg-portek-green text-portek-bg"
+                      : "bg-portek-card border border-portek-border text-portek-muted hover:text-white"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {statuses.length > 1 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {statuses.map((st) => (
-              <button
-                key={`st-${st}`}
-                onClick={() => setStatusFilter(st)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
-                  statusFilter === st
-                    ? "border-2 border-portek-green text-portek-green"
-                    : "border border-portek-border text-portek-muted hover:text-white"
-                }`}
-              >
-                {st}
-              </button>
-            ))}
+          <div className="flex items-center gap-2 mt-3">
+            <span className="text-portek-muted text-xs shrink-0">Status:</span>
+            <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none flex-nowrap">
+              {statuses.map((st) => (
+                <button
+                  key={`st-${st}`}
+                  onClick={() => setStatusFilter(st)}
+                  className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    statusFilter === st
+                      ? "border-2 border-portek-green text-portek-green"
+                      : "border border-portek-border text-portek-muted hover:text-white"
+                  }`}
+                >
+                  {st}
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </section>

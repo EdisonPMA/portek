@@ -265,7 +265,7 @@ export default function CrudManager({ config }) {
           placeholder={t("admin.searchRecords")}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="hidden sm:block bg-portek-card border border-portek-border rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-portek-muted outline-none focus:border-portek-green/50 w-56"
+          className="bg-portek-card border border-portek-border rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-portek-muted outline-none focus:border-portek-green/50 w-full sm:w-56"
         />
       </PageHeader>
 

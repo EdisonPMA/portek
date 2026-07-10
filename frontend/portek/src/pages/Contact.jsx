@@ -163,11 +163,11 @@ export default function Contact() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10">
           {/* Left — Form & info */}
           <div className="space-y-6">
             {/* Contact info cards */}
-            <div className="grid sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
                 { icon: FaEnvelope, label: t("common.email"), value: profile.email },
                 { icon: FaPhone, label: t("common.phone"), value: profile.phone },
@@ -175,11 +175,13 @@ export default function Contact() {
               ].map(({ icon: Icon, label, value }) => (
                 <div
                   key={label}
-                  className="bg-portek-card border border-portek-border rounded-xl p-4 text-center"
+                  className="bg-portek-card border border-portek-border rounded-xl p-4 flex sm:flex-col items-center sm:items-center gap-3 sm:gap-1 sm:text-center"
                 >
-                  <Icon className="w-5 h-5 text-portek-green mx-auto mb-2" />
-                  <p className="text-portek-muted text-[10px] uppercase tracking-wide">{label}</p>
-                  <p className="text-white text-xs font-medium mt-1 truncate">{value || "—"}</p>
+                  <Icon className="w-5 h-5 text-portek-green shrink-0" />
+                  <div className="min-w-0">
+                    <p className="text-portek-muted text-[10px] uppercase tracking-wide">{label}</p>
+                    <p className="text-white text-xs font-medium mt-0.5 truncate">{value || "—"}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -318,7 +320,7 @@ export default function Contact() {
           </div>
 
           {/* Right — AI Assistant */}
-          <div className="bg-portek-card border border-portek-border rounded-2xl flex flex-col h-[600px] lg:h-auto lg:min-h-[640px] overflow-hidden">
+          <div className="bg-portek-card border border-portek-border rounded-2xl flex flex-col min-h-[420px] lg:min-h-[640px] lg:h-auto overflow-hidden">
             <div className="px-5 py-4 border-b border-portek-border flex items-center gap-3 shrink-0">
               <div className="w-10 h-10 rounded-xl bg-portek-green/10 border border-portek-green/30 flex items-center justify-center">
                 <FaRobot className="w-5 h-5 text-portek-green" />

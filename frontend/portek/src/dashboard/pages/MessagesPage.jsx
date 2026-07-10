@@ -75,7 +75,8 @@ export default function MessagesPage() {
         </div>
       ) : (
         <div className="grid lg:grid-cols-5 gap-6">
-          <div className="lg:col-span-2 space-y-2 max-h-[600px] overflow-y-auto">
+          {/* Message list — hidden on mobile when a message is selected */}
+          <div className={`lg:col-span-2 space-y-2 max-h-[600px] overflow-y-auto ${selected ? "hidden lg:block" : "block"}`}>
             {filtered.length === 0 ? (
               <div className="rounded-2xl border border-portek-border bg-portek-card p-8 text-center text-portek-muted text-sm">
                 No messages found.
@@ -118,18 +119,26 @@ export default function MessagesPage() {
             )}
           </div>
 
-          <div className="lg:col-span-3">
+          {/* Message detail — full-width on mobile when selected */}
+          <div className={`lg:col-span-3 ${selected ? "block" : "hidden lg:block"}`}>
             {selected ? (
-              <div className="rounded-2xl border border-portek-border bg-portek-card p-6">
-                <div className="flex items-start justify-between gap-4 mb-6">
+              <div className="rounded-2xl border border-portek-border bg-portek-card p-5 sm:p-6">
+                {/* Back button — mobile only */}
+                <button
+                  onClick={() => setSelected(null)}
+                  className="lg:hidden mb-4 flex items-center gap-1.5 text-portek-muted hover:text-white text-sm transition-colors"
+                >
+                  ← Back to messages
+                </button>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
                   <div>
-                    <h3 className="text-xl font-bold text-white">{selected.name}</h3>
-                    <p className="text-portek-green text-sm">{selected.email}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-white">{selected.name}</h3>
+                    <p className="text-portek-green text-sm break-all">{selected.email}</p>
                     <p className="text-portek-muted text-xs mt-1">
                       {new Date(selected.created_at).toLocaleString()}
                     </p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2 shrink-0">
                     <button
                       onClick={() => markRead(selected.id, !selected.is_read)}
                       className="px-3 py-1.5 rounded-lg border border-portek-border text-xs text-portek-muted hover:text-white"
@@ -147,7 +156,7 @@ export default function MessagesPage() {
                 {selected.subject && (
                   <p className="font-semibold text-white mb-3">{selected.subject}</p>
                 )}
-                <p className="text-white/80 leading-relaxed whitespace-pre-wrap">
+                <p className="text-white/80 leading-relaxed whitespace-pre-wrap break-words">
                   {selected.message}
                 </p>
               </div>

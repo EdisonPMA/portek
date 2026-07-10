@@ -90,7 +90,7 @@ export default function DashboardHome() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
         {statCards.map(({ labelKey, value, icon: Icon, color }) => (
           <div
             key={labelKey}

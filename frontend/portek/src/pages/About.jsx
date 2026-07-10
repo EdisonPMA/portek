@@ -174,7 +174,7 @@ export default function About() {
                 <img
                   src={photoSrc}
                   alt={profile.full_name}
-                  className="w-72 sm:w-80 lg:w-full max-w-md aspect-[4/5] object-cover object-top"
+                  className="w-full max-w-xs sm:max-w-sm lg:max-w-md aspect-[4/5] object-cover object-top"
                 />
                 <div className="absolute bottom-4 left-4 right-4 bg-portek-card/90 backdrop-blur-sm border border-portek-border rounded-xl px-4 py-3">
                   <div className="flex items-center gap-2">
